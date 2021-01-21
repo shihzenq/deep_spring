@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/deep_in_spring/container_ioc/container_ioc.iml" filepath="$PROJECT_DIR$/deep_in_spring/container_ioc/container_ioc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deep_in_spring/deep_in_spring.iml" filepath="$PROJECT_DIR$/deep_in_spring/deep_in_spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/deep_spring.iml" filepath="$PROJECT_DIR$/.idea/deep_spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deep_in_spring/spring-bean/spring-bean.iml" filepath="$PROJECT_DIR$/deep_in_spring/spring-bean/spring-bean.iml" />
+    </modules>
+  </component>
+</project>
