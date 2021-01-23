@@ -9,6 +9,14 @@ public class User {
 
     private Integer age;
 
+    public User() {
+    }
+
+    public User(Long id, String name, Integer age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
 
     public Long getId() {
         return id;
@@ -41,5 +49,9 @@ public class User {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    public static User creatUser() {
+        return new User(22L, "shi", 12);
     }
 }
