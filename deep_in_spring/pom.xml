@@ -11,6 +11,7 @@
         <module>container_ioc</module>
         <module>spring-bean</module>
         <module>dependency-lookup</module>
+        <module>dependency-injection</module>
     </modules>
     <packaging>pom</packaging>
 
