@@ -27,6 +27,6 @@ public class ObjectProviderDemo{
 
     private static void lookupByObjectProvider(AnnotationConfigApplicationContext applicationContext) {
         ObjectProvider<User> beanProvider = applicationContext.getBeanProvider(User.class);
-        System.out.println(beanProvider.getObject());
+        System.out.println(beanProvider.getIfAvailable());
     }
 }
