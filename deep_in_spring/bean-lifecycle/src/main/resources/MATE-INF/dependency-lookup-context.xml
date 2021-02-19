@@ -8,32 +8,38 @@
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--    <context:annotation-config/>-->
+    <!--    <context:annotation-config/>-->
 
-<!--    <context:component-scan base-package="org.acme" />-->
+    <!--    <context:component-scan base-package="org.acme" />-->
 
     <!-- Root BeanDefinition 不需要合并，不存在 parent -->
     <!-- 普通 beanDefinition GenericBeanDefinition -->
     <!-- 经过合并后 GenericBeanDefinition 变成 RootBeanDefinition -->
     <bean id="user" class="com.shizhenqiang.framework.container.ioc.domain.User">
-        <property name="id"  value="1"/>
-        <property name="age" value="25" />
+        <property name="id" value="1"/>
+        <property name="age" value="25"/>
         <property name="name" value="shizhenqinag"/>
     </bean>
- <bean id="childUser" class="com.shizhenqiang.framework.container.ioc.domain.ChildUser" primary="true" parent="user">
-        <property name="id"  value="1"/>
-        <property name="age" value="25" />
+    <bean id="childUser" class="com.shizhenqiang.framework.container.ioc.domain.ChildUser"  parent="user">
+        <property name="id" value="1"/>
+        <property name="age" value="25"/>
         <property name="name" value="shizhenqinag"/>
-        <property name="address" value="北京" />
+        <property name="address" value="北京"/>
     </bean>
 
-<!--    <bean id="user2" class="com.shizhenqiang.framework.container.ioc.domain.User" >-->
-<!--        <property name="id"  value="2"/>-->
-<!--        <property name="age" value="25" />-->
-<!--        <property name="name" value="shizhenqinag222"/>-->
-<!--    </bean>-->
+    <!--    <bean id="user2" class="com.shizhenqiang.framework.container.ioc.domain.User" >-->
+    <!--        <property name="id"  value="2"/>-->
+    <!--        <property name="age" value="25" />-->
+    <!--        <property name="name" value="shizhenqinag222"/>-->
+    <!--    </bean>-->
 
     <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
-        <property name="targetBeanName" value="user" />
+        <property name="targetBeanName" value="user"/>
     </bean>
+
+    <bean id="userHolder"  class="org.shizhenqiang.framework.bean.lifecycle.UserHolder" autowire="constructor" init-method="init">
+        <property name="number" value="111" />
+    </bean>
+
+    <bean id="myInstantiationAwareBeanPostProcessor" class="org.shizhenqiang.framework.bean.lifecycle.MyInstantiationAwareBeanPostProcessor" />
 </beans>

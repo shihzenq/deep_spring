@@ -3,21 +3,23 @@ package org.shizhenqiang.framework.bean.lifecycle;
 import com.shizhenqiang.framework.container.ioc.domain.User;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.annotation.CommonAnnotationBeanPostProcessor;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class BeanInstantiationLifecycleDemo {
+public class BeanInitializationLifecycleDemo {
 
     public static void main(String[] args) {
         executeBeanFactory();
 
         System.out.println("-------------------------------------------------------------------");
-        executeApplicationContext();
+//        executeApplicationContext();
     }
 
     private static void executeBeanFactory() {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         // 添加BeanPostProcessor
-
+        beanFactory.addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
+        beanFactory.addBeanPostProcessor(new CommonAnnotationBeanPostProcessor());
         XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
         int beanDefinitions = xmlBeanDefinitionReader.loadBeanDefinitions("classpath:/MATE-INF/dependency-lookup-context.xml");
         System.out.println(beanDefinitions);
@@ -28,6 +30,7 @@ public class BeanInstantiationLifecycleDemo {
         User childUser = beanFactory.getBean("childUser", User.class);
         System.out.println(childUser);
 
+        beanFactory.preInstantiateSingletons();
         UserHolder userHolder = beanFactory.getBean("userHolder", UserHolder.class);
         System.out.println(userHolder);
     }
