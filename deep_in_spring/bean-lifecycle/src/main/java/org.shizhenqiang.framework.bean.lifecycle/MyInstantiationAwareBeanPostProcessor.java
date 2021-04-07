@@ -35,6 +35,7 @@ public class MyInstantiationAwareBeanPostProcessor implements InstantiationAware
         if (ObjectUtils.nullSafeEquals("userHolder", beanName) && UserHolder.class.equals(bean.getClass())) {
             MutablePropertyValues mutablePropertyValues = new MutablePropertyValues();
             mutablePropertyValues.addPropertyValue("number", "222");
+            System.out.println("postProcessProperties");
             return mutablePropertyValues;
         }
         return null;
@@ -45,6 +46,7 @@ public class MyInstantiationAwareBeanPostProcessor implements InstantiationAware
         if (ObjectUtils.nullSafeEquals("userHolder", beanName) && UserHolder.class.equals(bean.getClass())) {
             UserHolder userHolder = (UserHolder) bean;
             userHolder.setDescription("the userHolder v3");
+            System.out.println("postProcessBeforeInitialization-> "+userHolder);
             return userHolder;
         }
         return bean;
